@@ -32,7 +32,6 @@ class usuario
 		$numeroCelular,
 		$numeroTelefonico,
 		$email,
-		$direccion,
 		$contraseña
 	) {
 		$this->_rol = $rol;
@@ -43,7 +42,6 @@ class usuario
 		$this->_numeroCelular = $numeroCelular;
 		$this->_numeroTelefonico = $numeroTelefonico;
 		$this->_email = $email;
-		$this->_direccion = $direccion;
 		$this->_contraseña = $contraseña;
 	}
 
@@ -103,12 +101,6 @@ class usuario
 	{
 		return $this->_s_apellido;
 	}
-
-	public function getDirecion()
-	{
-		return $this->_direccion;
-	}
-
 	/**
 	 * @access public
 	 */
