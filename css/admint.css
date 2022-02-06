@@ -5,87 +5,83 @@
 
 body {
     background-image: url(https://fondosmil.com/fondo/11825.jpg);
-}
-
-
-/* nav {
-    display: flex;
-    justify-content: space-between;
-    color: white;
     text-align: center;
-    padding-right: 70px;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-} */
-
-table {
-    color: white;
-    background: rgba(0, 0, 0, 0.4);
-    margin: auto;
-    width: 100%;
-}
-
-a {
-    color: rgb(103, 156, 224);
-    font-weight: 800;
-}
-
-input {
-    display: block;
-    border: solid black 1px;
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 10px;
-}
-
-td,
-th {
-    border: solid black 1px;
-    padding: 10px;
-}
-
-th {
-    background: rgba(0, 0, 0, 0.5);
-    font-weight: 800;
-    text-align: center;
+    
 }
 
 .content {
-    color: white;
+    color: whitesmoke;
     background: rgba(0, 0, 0, 0.2);
     margin: 30px;
-    padding-left: 20px;
+    padding-left: 100px;
     height: 100%;
 }
-
+.titulos{
+    padding-left: 350px;
+    color: antiquewhite;
+    font-size: 40px;
+}
 .submit {
     width: 150px;
     height: 50px;
 }
 
 .submit:hover {
-    background: rgba(0, 0, 0, 0.20);
+    background: rgba(61, 60, 60, 0.2);
 }
 
-.groupForm {
-    background: green;
+.groupForm{
+    background: black;
     display: flex;
 }
 
 #det {
     color: black;
 }
+/*admint.php*/
 
-.groupForm {
-    display: grid;
-    grid-template-columns: auto auto;
+#datosUsuario{
+    margin-left: 72%;
+    padding: 10px;
 }
 
-.groupForm div input {
-    margin-bottom: 10px;
+#informeBotton{
+    background-color: rgba(24, 199, 199, 0.815);
+    border: black;
+    padding: 50px;
+    margin: 50px;
+    border-color:green;
+    font-size: 25px;
+    
 }
 
-#accordionFlushExample div {
-    background: rgba(0, 0, 0, 0.1);
+#empleadosRegistradosBotton{
+    background-color: rgba(24, 199, 199, 0.815);
+    border: black;
+    padding: 50px;
+    margin: 50px;
+    font-size: 25px;
+}
+
+#registrousuarioBotton{
+    left: 200px;
+    background-color: rgba(24, 199, 199, 0.815);
+    border: black;
+    padding:  50px;
+    margin: 50px;
+    font-size: 25px;
+}
+
+#informeForm{
+    color:  black;
+}
+
+.modal-header{
+    font-weight: 200px;
+    background-color: rgba(78, 86, 105, 0.582);
+}
+
+.modal-body{
+background-color: white(61, 123, 180, 0.582);
+color: black;
 }
