@@ -1,0 +1,42 @@
+* {
+    color: white;
+    font-family: cursive;
+}
+
+body {
+    background: black;
+}
+
+h1 {
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    border-bottom: solid 5px red;
+    padding: 25px;
+}
+
+nav p {
+    font-size: 30px;
+    margin-left: 30px;
+}
+
+nav a {
+    position: relative;
+    left: 500px;
+}
+
+
+/*class*/
+
+.img {}
+
+.img img {
+    display: block;
+    margin: auto;
+}
+
+.footer {
+    border-top: solid 3px red;
+}
