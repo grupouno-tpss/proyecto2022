@@ -20,7 +20,6 @@ class usuario
 	private $_numeroCelular;
 	private $_numeroTelefonico;
 	private $_email;
-	private $_direccion;
 	private $_contraseña;
 
 	public function __construct(
