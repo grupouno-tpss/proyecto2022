@@ -1,9 +1,7 @@
 <?php
-session_start();
-echo "HOla";
-echo "<script>alert('".$_SESSION['user']."')</script>";
 
-require_once("../php/conexion.php");
+
+require_once('../php/reserva.php');
 ?>
 
 <!DOCTYPE html>
@@ -41,70 +39,47 @@ require_once("../php/conexion.php");
 
 <body>
     <?php
-    include "pages/loading.php";
     include "pages/nav.php";
 
-    $resultado = mysqli_query(conectUser(), "SELECT idreserva, cantpersonas, hora, fecha, comentariocol, idcomentario, estado, tipo_documento, numDocumento, correo, telefono, telcelular, p_nombre FROM reserva R INNER JOIN info_reserva I ON R.info_reserva_idinfo = I.idinfo INNER JOIN especificacion E ON E.idcomentario = R.especificacion_idcomentario INNER JOIN estado ES ON ES.idestado = R.estado_idestado INNER JOIN usuario U ON R.usuario_numDocumento = U.numDocumento AND R.usuario_numDocumento = " . $_SESSION["numDocumento"] . " INNER JOIN contacto C ON C.idcontacto = U.contacto_idcontacto;");
+    $reserva = reserva::consultarReserva();
 
-    echo '<section class="container tab">
-    <br><br><h3>RESERVACIONES USUARIO: ' . $_SESSION["usuario"] . '</h3> <br><br>   
-    <table class="table">
-        <thead><tr>
-        <th scope="col">ID RESERVA</th>
-        <th scope="col">CANTIDAD PERSONAS</th>
-        <th scope="col">HORA</th>
-        <th scope="col">FECHA</th>
-        <th scope="col">INDICACIONES</th>
-        <th scope="col">ESTADO</th>
-        <th scope="col">TIPO DE DOCUMENTO</th>        
-        <th scope="col">NUMERO DE DOCUMENTO</th>        
-        <th scope="col">CORREO</th>        
-        <th scope="col">TELEFONO</th>        
-        <th scope="col">TELEFONO CELULAR</th>  
-        <th scope="col">OPERACIÓN</th>        
-      </tr>
-    </thead><tbody>';
-    while ($row = mysqli_fetch_assoc($resultado)) {
-        echo '<tr>
-        <th scope="row">' . $row["idreserva"] . '</th>
-        <td>' . $row["cantpersonas"] . '</td>
-        <td>' . $row["hora"] . '</td>
-        <td>' . $row["fecha"] . '</td>
-        <td>' . $row["comentariocol"] . '</td>
-        <td class="estado">' . $row["estado"] . '</td>
-        <td>' . $row["tipo_documento"] . '</td>
-        <td>' . $row["numDocumento"] . '</td>
-        <td>' . $row["correo"] . '</td>
-        <td>' . $row["telefono"] . '</td>
-        <td>' . $row["telcelular"] . '</td>
-        <td><button onclick="eliminarReservaUsuario(' . $row["idreserva"] . ')" class="btn btn-danger">Cancelar reservación</button></td>
-        <td><button class="btn btn-primary"><a href="../views/modificarReserva.php?modificarCR=' . $row["idreserva"] . '" style="color: white">Modificar reservación<a></button></td>
-      </tr>';
-    }
-
-    echo '</tbody>
-        </table></section>';
     ?>
+    <div class="container" style="overflow-x: auto;">
+        <h2 class="text-center">Reservaciones</h2>
+        <br>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">id reserva</th>
+                    <th scope="col">Titular de la reserva</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Correo electrónico</th>
+                    <th scope="col">Detalles</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Operación</th>
+                </tr>
+            </thead>
+            <tbody>
 
-    <br>
-
-    <div class="center">
-        <button class="btn btn-primary"><a href="reserva.php" style="color: white; font-weight: bold;">Hacer una reserva</a></button>
+                <?php
+                while ($row = mysqli_fetch_assoc($reserva)) {
+                    echo '<tr>
+                        <th scope="row">' . $row['idreserva'] . '</th>
+                        <td>'.$row['p_nombre']. " " . $row['p_apellido'].'</td>
+                        <td>'. $row['fecha'].'</td>
+                        <td>'. $row['hora'].'</td>
+                        <td>'. $row['email'].'</td>
+                        <td><button class="btn btn-secondary" onclick="alert(`'.$row['comentariocol'].'`)">Ver detalle</button></td>
+                        <td>'. $row['estado'].'</td>
+                        <td><button class="btn btn-primary">Modificar</button> <button class="btn btn-danger">Eliminar</button></td>
+                    </tr>';
+                }
+                ?>
+            </tbody>
     </div>
+    </table>
 
-    <script>
-        function eliminarReservaUsuario(idreserva) {
-            var deleteComfirmRU = confirm("Seguro que quiere eliminar la reservación?");
-
-            if (deleteComfirmRU = true) {
-                location.href = "../php/reserva.php?idReservaD=" + idreserva;
-            }
-        }
-
-        function modificarReserva(idreservaM) {
-            location.href = "../views/modificarReserva.php?idReservaD=" + idreservaM;
-        }
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
