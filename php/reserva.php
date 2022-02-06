@@ -37,7 +37,6 @@ class reserva
 		$paquete,
 		$indicaciones,
 		$estado,
-		$id
 	) {
 		$this->_fecha = $fecha;
 		$this->_hora = $hora;
@@ -46,7 +45,6 @@ class reserva
 		$this->_paquete = $paquete;
 		$this->_indicaciones = $indicaciones;
 		$this->_estado = $estado;
-		$this->id = $id;
 	}
 	/**
 	 * @AttributeType usuario
@@ -58,17 +56,33 @@ class reserva
 	public $_unnamed_usuario_;
 	//
 
-	public function buscarUsuario()
-	{
-		$resultado = mysqli_query(conectUser(), "SELECT tipo_documento, numDocumento FROM usuario U INNER JOIN contacto C ON C.correo = '" . $_SESSION["usuario"] . "';");
-		return mysqli_fetch_assoc($resultado)["numDocumento"];
-	}
-
 	public function reservar()
 	{
 		$this->generarID();
-		mysqli_query(conectUser(), "INSERT INTO especificacion(idcomentario, comentariocol) VALUES (" . $this->getID() . ", '" . $this->getIndicacion() . "');");
-		mysqli_query(conectUser(), "INSERT INTO reserva (idreserva, cantpersonas, info_reserva_idinfo, especificacion_idcomentario, estado_idestado, usuario_tipo_documento, usuario_numDocumento) VALUES (" . $this->getID() . ", " . $this->getPersonas() . ", " . $this->getHora() . ", " . $this->getID() . ", 1, '" . $_SESSION["tipoDocumento"] . "', " . $_SESSION["numDocumento"] . ");");
+		$info_reserva = "INSERT INTO `info_reserva`(`idinfo`, `hora`, `fecha`)
+		VALUES (" . $this->_id . ",'" . $this->getHora() . "','" . $this->getHora() . "')";
+
+		$detalles = "INSERT INTO `especificacion`(`idcomentario`, `comentariocol`) 
+		VALUES (".$this->_id.",'".$this->getIndicacion()."')";
+
+		$reserva = "INSERT INTO `reserva`(`idreserva`, `cantpersonas`, `info_reserva_idinfo`, `especificacion_idcomentario`, `estado_idestado`, `usuario_id`) 
+		VALUES (".$this->_id.", ".$this->getPersonas().", ".$this->_id.", ".$this->_id.", 1, ".$_SESSION['userID'].")";
+
+		mysqli_query(conectUser(), $info_reserva);
+		mysqli_query(conectUser(), $detalles);
+		mysqli_query(conectUser(), $reserva);
+	}
+
+	//Consultar reserva
+
+	static function consultarReserva(){
+
+		$query = mysqli_query(conectUser(), "SELECT idreserva, cantpersonas, comentariocol, hora, fecha, estado, id_usuario, email, p_nombre, p_apellido 
+		FROM reserva R INNER JOIN especificacion E ON E.idcomentario = R.idreserva 
+		INNER JOIN info_reserva I ON I.idinfo = R.idreserva 
+		INNER JOIN estado ES ON ES.idestado = 1 
+		INNER JOIN usuario ON R.usuario_id = usuario_id");
+		return $query;
 	}
 
 	public function actualizarReserva()
@@ -155,15 +169,6 @@ class reserva
 		return $this->_menu;
 	}
 
-	/**
-	 * @access public
-	 * @return string
-	 * @ReturnType string
-	 */
-	public function getEstado()
-	{
-		// Not yet implemented
-	}
 
 	/**
 	 * @access public
