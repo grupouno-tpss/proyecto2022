@@ -1,0 +1,73 @@
+* {
+    margin: 0px;
+    font-family: cursive;
+}
+
+body {
+    background-image: url(https://fondosmil.com/fondo/11825.jpg);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    text-align: center;
+    padding-right: 70px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+}
+
+table {
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    margin: auto;
+    width: 100%;
+}
+
+a {
+    color: rgb(103, 156, 224);
+    font-weight: 800;
+}
+
+input {
+    border: solid black 1px;
+    padding: 10px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 80%;
+    height: 100px;
+    color: white;
+}
+
+td,
+th {
+    border: solid black 1px;
+    padding: 10px;
+}
+
+th {
+    background: rgba(0, 0, 0, 0.5);
+    font-weight: 800;
+    text-align: center;
+}
+
+.content {
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 30px;
+    padding-left: 80px;
+    
+}
+
+.submit {
+    width: 150px;
+    height: 50px;
+}
+
+.submit:hover {
+    background: rgba(0, 0, 0, 0.20);
+}
+
+#det {
+    color: black;
+}

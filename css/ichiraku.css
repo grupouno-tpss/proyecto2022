@@ -1,0 +1,48 @@
+* {
+    color: white;
+    font-family: cursive;
+    margin: 0px;
+}
+
+body {
+    background: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+nav div {
+    background: black;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: solid 5px red;
+    padding: 25px;
+    padding-top: 40px;
+    margin-bottom: 30px;
+}
+
+.l {
+    position: relative;
+    left: 33%;
+}
+
+nav p {
+    font-size: 30px;
+    margin-left: 30px;
+}
+
+
+/*class*/
+
+.img {}
+
+.img img {
+    width: 70%;
+    display: block;
+    margin: auto;
+}
+
+.footer {
+    border-top: solid 3px red;
+}
