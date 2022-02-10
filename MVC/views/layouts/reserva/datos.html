@@ -1,0 +1,39 @@
+<section class="container section">
+    <h2>2. Datos adicionales</h2>
+    <div>
+        <form id="datosAdicionales">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Cantidad de personas *</label>
+                <input type="number" class="form-control" id="cantidadPersonas" aria-describedby="emailHelp">
+            </div>
+            <br>
+            <select id="servicioTipo" class="form-select" aria-label="Default select example">
+                <option selected>Paquete *</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+            <br>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Indicaciones</label>
+                <input type="text" class="form-control" id="comentario" aria-describedby="emailHelp">
+            </div>
+            <input type="submit" id="next2" value="Siguiente">
+        </form>
+
+        <!-- <button id="reservar"><a href="#cargarReserva">Reservar</a></button> -->
+    </div>
+
+    <script>
+        document.getElementById("next2").addEventListener("click", () => {
+            asignar();
+            location.href = "#menus"
+        });
+        document.getElementById("datosAdicionales").addEventListener("submit", (e) => {
+            e.preventDefault();
+            dataReserva[2] = document.getElementById("cantidadPersonas").value;
+            dataReserva[3] = document.getElementById("servicioTipo").value;
+            dataReserva[4] = document.getElementById("comentario").value;
+        });
+    </script>
+</section>
