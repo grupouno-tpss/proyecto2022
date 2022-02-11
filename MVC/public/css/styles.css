@@ -1,0 +1,70 @@
+/*RESERVA*/
+
+.calendar {
+    display: grid;
+    grid-template-columns: 14.2% 14.2% 14.2% 14.2% 14.2% 14.2% 14.2%;
+}
+
+.calendar div {
+    height: 10vh;
+    border: solid gray 1px;
+    text-align: center;
+}
+
+.calendar div:hover {
+    background-color: #3F5B97;
+    color: white;
+    cursor: pointer;
+}
+
+.infoCalendar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modalCalendar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentCalendarModal {
+    background-color: white;
+    width: 50%;
+    padding: 30px;
+    display: block;
+    border-radius: 5px;
+}
+
+.section {
+    height: 100vh;
+}
+
+.data {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#dataReserva {
+    background-color: white;
+    padding: 15px;
+    display: block;
+    border-radius: 5px;
+}
+
+#verDatos {
+    position: fixed;
+    top: 11%;
+    display: flex;
+}
