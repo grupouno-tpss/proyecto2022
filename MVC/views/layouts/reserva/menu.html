@@ -1,0 +1,66 @@
+<html>
+<style>
+    .prueba {
+        color: black;
+    }
+    
+    .inlineCard {
+        display: flex;
+    }
+</style>
+<section class="container section" id="menus">
+    <br>
+    <h3>2. Seleccione el menú (opcional)</h3>
+
+    <div class="inlineCard">
+        <div class="card" style="width: 18rem;">
+            <img src="https://images.pexels.com/photos/884596/pexels-photo-884596.jpeg?cs=srgb&dl=pexels-quang-anh-ha-nguyen-884596.jpg&fm=jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a onclick="selectMenu('Menu1')" class="btn btn-primary selectMenu">menu 1</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="https://images.pexels.com/photos/884596/pexels-photo-884596.jpeg?cs=srgb&dl=pexels-quang-anh-ha-nguyen-884596.jpg&fm=jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a onclick="selectMenu('Menu2')" class="btn btn-primary selectMenu">Menu 2</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="https://images.pexels.com/photos/884596/pexels-photo-884596.jpeg?cs=srgb&dl=pexels-quang-anh-ha-nguyen-884596.jpg&fm=jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a onclick="selectMenu(3)" class="btn btn-primary">Menú 3</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="https://images.pexels.com/photos/884596/pexels-photo-884596.jpeg?cs=srgb&dl=pexels-quang-anh-ha-nguyen-884596.jpg&fm=jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a onclick="selectMenu(4)" class="btn btn-primary">Menú 4</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let menus = [];
+
+        function selectMenu(a) {
+            confirmMenu = confirm("¿Segur@ que quiere seleccionar el menú " + a + "?");
+            console.log(confirmMenu);
+            if (confirmMenu = true) {
+                dataReserva[5] = a;
+                menus.push(a);
+                console.log(menus);
+            }
+        }
+    </script>
+
+</section>
+
+</html>
